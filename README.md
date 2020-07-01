@@ -1,10 +1,10 @@
 # elasticsearch-sandbox
 
-Importing *.csv to elasticsearch w/ logstash.
+Importing *.csv to elasticsearch
 
-- define schema
+- xslx to csv
+- define schema (mappings) : csv to json
 - design pipeline
-    - xslx to csv
-    - csv to json
-    - export to elasticsearch
+    - ingestion
+
 

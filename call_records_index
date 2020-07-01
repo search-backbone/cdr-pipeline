@@ -1,0 +1,25 @@
+curl -X PUT "localhost:9200/call_records?pretty" -H 'Content-Type: application/json' -d'
+{
+    "settings" : {
+        "number_of_shards" : 1
+    },
+    "mappings" : {
+    "properties" : {
+        "baz_istasyonu": { "type": "text" },
+        "hedef_numara": { "type": "keyword" },
+        "hedef_numara_adres": { "type": "text" },
+        "hedef_numara_dogum": { "type": "keyword" },
+        "hedef_numara_ebevyn": { "type": "keyword" },
+        "hedef_numara_il": { "type": "keyword" },
+        "hedef_numara_isim": { "type": "text" },
+        "imei": { "type": "keyword" },
+        "numara": { "type": "keyword" },
+        "sure": { "type": "long" },
+        "tip": { "type": "keyword" }
+        "tarih": {
+            "type": "date",
+            "format": "dd.MM.yyyy HH:mm:ss"
+        },
+   }}
+}
+'
