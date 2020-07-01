@@ -1,4 +1,6 @@
 
+echo "Check .gcp.env file, first!"
+
 source .gcp.env
 
 gcloud beta compute --project=${PROJECT} instances create instance-1 \
@@ -15,3 +17,8 @@ gcloud beta compute --project=${PROJECT} instances create instance-1 \
                     --boot-disk-device-name=instance-1 \
                     --labels=name=elasticsearch \
                     --reservation-affinity=any
+
+
+echo "Open firewall ports 9200, 5601, then"
+echo "SSH to COS image, then"
+echo "Run ./install-elasticsearch-docker.sh, and ./install-kibana-docker.sh"

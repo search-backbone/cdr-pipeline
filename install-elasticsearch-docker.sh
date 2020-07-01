@@ -1,5 +1,5 @@
 
-export ELASTIC_NAME=abidindenyo
+source .elk.env
 
 docker run -itd --name ${ELASTIC_NAME} \
            -p 9200:9200 -p 9300:9300 \
