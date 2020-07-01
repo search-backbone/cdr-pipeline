@@ -1,4 +1,4 @@
-# elasticsearcg-sandbox
+# elasticsearch-sandbox
 
 Importing *.csv to elasticsearch w/ logstash.
 
