@@ -1,4 +1,7 @@
-curl -X PUT "localhost:9200/call_records?pretty" \
+source .elk.env
+
+
+curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
      -H 'Content-Type: application/json' \
      -d'
 {
