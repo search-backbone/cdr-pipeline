@@ -10,10 +10,12 @@ docker run -itd --name ${ELASTIC_NAME} \
            -e "discovery.type=single-node" \
            docker.elastic.co/elasticsearch/elasticsearch:7.8.0
 
-docker run -itd--name ${KIBANA_NAME} \
+docker run -itd --name ${KIBANA_NAME} \
            --link ${ELASTIC_NAME}:elasticsearch \
            -p 5601:5601 \
            docker.elastic.co/kibana/kibana:7.8.0
 
 echo "Check scenarios to test" 
-echo "to test bulk data ingestion, Run: sh load-bulk.sh"            
+echo "to test bulk data ingestion, Run: sh load-bulk.sh"  
+
+echo "Use, docker start abidindenyo kibana, once you have started !!!"
