@@ -1,4 +1,4 @@
-"birincil_numara","tip","tarih","sure","imei","kaynak_ip","hedef_ip","erisilen_sayfa","gonderm$
+sira_no;birincil_numara;tip;tarih;sure;imei;kaynak_ip;hedef_ip;erisilen_sayfa;gonderme_miktari;indirme_miktari;baz_istasyon;
 1;5529990000;Gprs;21.12.2016 16:52:14 ;117 sn.;88888888888881;10.178.240.31;;;6319;4239;4341517040 - opr:Avea(WIS17040) - ISTINYE PARK ALISVERIS MERKEZI ISTINYE,ISTANBUL;;;;;;;;
 2;5529990000;Gprs;21.12.2016 16:53:40 ;24 sn.;88888888888881;10.178.240.31;;;2576;1380;4341517040 - opr:Avea(WIS17040) - ISTINYE PARK ALISVERIS MERKEZI ISTINYE,ISTANBUL;;;;;;;;
 3;5529990000;Gprs;21.12.2016 16:53:40 ;24 sn.;88888888888881;10.178.240.31;;;72097;226528;4341517040 - opr:Avea(WIS17040) - ISTINYE PARK ALISVERIS MERKEZI ISTINYE,ISTANBUL;;;;;;;;
