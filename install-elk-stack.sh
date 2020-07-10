@@ -18,4 +18,4 @@ docker run -itd --name ${KIBANA_NAME} \
 echo "Check scenarios to test" 
 echo "to test bulk data ingestion, Run: sh load-bulk.sh"  
 
-echo "Use, docker start abidindenyo kibana, once you have started !!!"
+echo "Use, docker start abidindenyo kibos, once you have started !!!"
