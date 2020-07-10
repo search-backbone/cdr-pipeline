@@ -10,8 +10,8 @@ Importing *.csv to elasticsearch
     - xslx to csv
     - csv to json, then bulk-elastic-json
         - `npm i -g csvtojson`, then
-        - `csvtojson data/call.csv --delimiter=";" > data/call_bulk.json`, then
-        - Edit file and remove [ and ] and ,
+        - `csvtojson data/call.csv --delimiter=";" > data/call_2.json`, then Edit file and remove _[_, _]_ and _,_ chars, then
+        - `cat data/call_2.json | jq -c '. | {"index": {"_index": ""}}, .' > data/call_bulk.json`
 
 - Scenarios
     - [ ] One record
