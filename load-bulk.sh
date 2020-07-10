@@ -5,7 +5,7 @@ source .elk.env
 
 curl -H 'Content-Type: application/x-ndjson' \
      -XPOST 'http://localhost:9200/${INDEX_NAME}/_bulk?pretty' \
-     --data-binary '@data/call_records_bulk.json'
+     --data-binary '@data/call_bulk.json'
 
 echo "On UI, create index patern, test, to see UI discovery"
 

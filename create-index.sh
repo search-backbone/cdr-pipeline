@@ -3,4 +3,4 @@ source .elk.env
 
 curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
      -H 'Content-Type: application/json' \
-     --data-binary '@call_records_mappings.json'
+     --data-binary '@mappings/call_records_mapping.json'

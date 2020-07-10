@@ -6,9 +6,12 @@ Importing *.csv to elasticsearch
     - to create COS instance on GCP `bash create-instance.sh`
         - to install ELK `bash install-elk-stack.sh`
 
-- [ ] Conversions
+- [x] Conversions
     - xslx to csv
-    - csv to json
+    - csv to json, then bulk-elastic-json
+        - `npm i -g csvtojson`, then
+        - `csvtojson data/call.csv --delimiter=";" > data/call_bulk.json`, then
+        - Edit file and remove [ and ] and ,
 
 - Scenarios
     - [ ] One record
