@@ -2,6 +2,9 @@
     "settings" : {
         "number_of_shards" : 1
     },
+
+    #;NUMARA;DURUM;AD;SOYAD;ADRES;DOĞUM TARİHİ;DOĞUM YERİ;İLÇE;İL;TC KİMLİK NO;ANNE ADI;BABA ADI;ABONE SORGU ARALIĞI;OPERATÖR;;;;;
+    
     "mappings" : {
         "properties" : {
             "@timestamp": {
