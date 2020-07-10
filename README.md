@@ -16,13 +16,15 @@ Importing *.csv to elasticsearch
 - Scenarios
     - [ ] One record
     - [x] Bulk 
-        - (json to bulk-elastic-json) format change must.
+        - json to bulk-elastic-json is must. Uses `data/call_bulk.json` file
         - create an index `bash create-index.sh`
         - load bulk to that index `bash load-bulk.sh`
         - to query
             - use curl commands, or
             - create _index pattern_ manually for Kibana UI
     - [ ] Ingestion
+        - ..
+    - [ ] Pipeline w/ Logstash
         - ..
 
 
