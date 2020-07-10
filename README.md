@@ -26,5 +26,7 @@ Importing *.csv to elasticsearch
         - ..
     - [ ] Pipeline w/ Logstash
         - ..
+    - [ ] Pipeline w/ Client Libraries
+        - ..
 
 
