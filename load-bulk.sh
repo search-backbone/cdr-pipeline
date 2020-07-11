@@ -8,7 +8,7 @@ curl -H 'Content-Type: application/x-ndjson' \
      --data-binary '@data/call_bulk.json'
 
 # query
-curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=sira_no:37"
+curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=sira_no:37&pretty"
 
 echo "On UI, create index patern, test, to see UI discovery"
 
