@@ -22,8 +22,11 @@ Importing *.csv to elasticsearch
         - to query
             - use curl commands, or
             - create _index pattern_ manually for Kibana UI
-    - [ ] Ingestion
-        - ..
+
+    - Ingestion
+        - [x] Ingestion w/ Kibana UI
+            - Just upload the file, check mappings etc. Not scalable.    
+        - [ ] ..
     - [ ] Pipeline w/ Logstash
         - ..
     - [ ] Pipeline w/ Client Libraries
