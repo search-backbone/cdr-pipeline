@@ -21,7 +21,7 @@ Importing *.csv to elasticsearch
         - load bulk to that index `bash load-bulk.sh`
         - to query
             - use curl commands 
-                - lucene syntax: `http://localhost:9200/call-records/_search?q=sira_no:37`, or
+                - lucene syntax: `curl -XGET "http://34.90.132.81:9200/call-records/_search?q=hedef_numara:5529991111&pretty"`, or
                 - ..
             - create _index pattern_ manually for Kibana UI
 
