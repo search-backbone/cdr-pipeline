@@ -4,7 +4,9 @@ Importing *.csv to elasticsearch
 
 - [x] Preparations
     - to create COS instance on GCP `bash create-instance.sh`
-        - to install ELK `bash install-elk-stack.sh`
+        - to install ELK `bash install-elk-stack.sh` inside COS instance
+        - `git clone ...` to get files on COS instance
+            - `chmod 777 cdr-pipeline/data`, and `chmod 777 cdr-pipeline/pipelines`
 
 - [x] Conversions
     - xslx to csv
