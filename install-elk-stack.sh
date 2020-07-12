@@ -3,6 +3,9 @@ source .elk.env
 
 echo "create a COS image instance on GCP"
 
+# handle permissions
+chmod 777 ~/cdr-pipeline/data
+
 docker run -itd --name ${ELASTIC_NAME} \
            -p 9200:9200 -p 9300:9300 \
            -e ES_JAVA_OPTS="-Xms16g -Xmx16g" \
@@ -21,7 +24,7 @@ docker run -itd --name ${LOGSTASH_NAME} \
            -e "monitoring.enabled=false" \
            -e “monitoring.elasticsearch.hosts=http://${ELASTIC_DOCKER_PRIVATE_IP}:9200” \
            -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
-           -v ~/cdr-pipeline/data:/data/ \
+           -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0           
 
 echo "Use, docker logs CONTAINER_NAME, to see errors"
