@@ -27,7 +27,7 @@ docker run -itd --name ${LOGSTASH_NAME} \
            -e "monitoring.enabled=false" \
            -e “monitoring.elasticsearch.hosts=http://${ELASTIC_DOCKER_PRIVATE_IP}:9200” \
            -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
-           -v ~/cdr-pipeline/data:/data/ \
+           -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0           
 
 echo "Use, docker logs CONTAINER_NAME, to see errors"
