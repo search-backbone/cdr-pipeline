@@ -25,7 +25,7 @@ docker run -itd --name ${KIBANA_NAME} \
 docker run -itd --name ${LOGSTASH_NAME} \
            -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
            -e xpack.monitoring.enabled="false" \
-           -e xpack.monitoring.elasticsearch.hosts="http://${ELASTIC_DOCKER_PRIVATE_IP}:9200” \
+           -e xpack.monitoring.elasticsearch.hosts="http://${ELASTIC_DOCKER_PRIVATE_IP}:9200" \
            -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
            -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0
