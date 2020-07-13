@@ -22,13 +22,13 @@ docker run -itd --name ${KIBANA_NAME} \
            docker.elastic.co/kibana/kibana:7.8.0
 
 docker run -itd --name ${LOGSTASH_NAME} \
-           --link abidindenyo:elasticsearch \
+           -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
            -p 9600:9600 \
            -e "monitoring.enabled=false" \
            -e “monitoring.elasticsearch.hosts=http://${ELASTIC_DOCKER_PRIVATE_IP}:9200” \
            -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
            -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
-           docker.elastic.co/logstash/logstash:7.8.0           
+           docker.elastic.co/logstash/logstash:7.8.0
 
 echo "Use, docker logs CONTAINER_NAME, to see errors"
 echo "Check scenarios to test" 
