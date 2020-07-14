@@ -29,13 +29,7 @@ sleep 60s
 echo "Step 3 ------- Check elasticsearch server -------"
 curl "localhost:9200"
 
-echo "Step 4 ------- Create Index -------"
-
-curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
-     -H 'Content-Type: application/json' \
-     --data-binary '@mappings/call_records_mapping.json'
-
-echo "Step 5 ------- Install logstash -------"
+echo "Step 4 ------- Install logstash -------"
 docker run -itd --name ${LOGSTASH_NAME} \
            -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
            -e xpack.monitoring.enabled="false" \
@@ -46,8 +40,9 @@ docker run -itd --name ${LOGSTASH_NAME} \
 
 sleep 30s
 
-echo "Step 6 ------- Check data -------"
-curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=numara:5529990000&pretty"
+echo "Step 5 ------- Check data -------"
+curl -XGET "http://localhost:9200/${INDEX_NAME[0]}/_search?q=numara:5529990000&pretty"
+curl -XGET "http://localhost:9200/${INDEX_NAME[1]}/_search?q=numara:5529990000&pretty"
 
 echo "Use, docker logs ${LOGSTASH_NAME} | tail &, to see logstash logs"
 echo "Use, docker start abidindenyo kibos ketenpere, once you have started !!!"
