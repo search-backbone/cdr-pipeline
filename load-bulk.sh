@@ -19,7 +19,7 @@ curl -H 'Content-Type: application/x-ndjson' \
      --data-binary '@data/call_bulk.json'
 
 # query
-echo "Step 4 ------- Check index -------"
+echo "Step 4 ------- Check data -------"
 curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=sira_no:37&pretty"
 curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=hedef_numara:5529991111&pretty"
 
