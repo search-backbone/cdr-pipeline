@@ -10,16 +10,14 @@ curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
      -H 'Content-Type: application/json' \
      --data-binary '@mappings/call_records_mapping.json'
 
-echo "Step 2 ------- Check index -------"
-curl "localhost:9200/call-records?pretty"
 
-echo "Step 3 ------- Load bulk data -------"
+echo "Step 2 ------- Load bulk data -------"
 curl -H 'Content-Type: application/x-ndjson' \
      -XPOST "http://localhost:9200/${INDEX_NAME}/_bulk?pretty" \
      --data-binary '@data/call_bulk.json'
 
 # query
-echo "Step 4 ------- Check data -------"
+echo "Step 3 ------- Check data -------"
 curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=sira_no:37&pretty"
 curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=hedef_numara:5529991111&pretty"
 
