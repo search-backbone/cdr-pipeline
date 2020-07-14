@@ -35,11 +35,7 @@ curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
      -H 'Content-Type: application/json' \
      --data-binary '@mappings/call_records_mapping.json'
 
-# check
-echo "Step 5 ------- Check index -------"
-curl "localhost:9200/call-records?pretty"
-
-echo "Step 6 ------- Install logstash -------"
+echo "Step 5 ------- Install logstash -------"
 docker run -itd --name ${LOGSTASH_NAME} \
            -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
            -e xpack.monitoring.enabled="false" \
@@ -50,9 +46,8 @@ docker run -itd --name ${LOGSTASH_NAME} \
 
 sleep 30s
 
-echo "Step 7 ------- Check pipelines -------"
-docker logs ${LOGSTASH_NAME} | tail &
-
+echo "Step 6 ------- Check data -------"
+curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=numara:5529990000&pretty"
 
 echo "Use, docker logs ${LOGSTASH_NAME} | tail &, to see logstash logs"
 echo "Use, docker start abidindenyo kibos ketenpere, once you have started !!!"
