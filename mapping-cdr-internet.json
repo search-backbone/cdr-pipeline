@@ -5,16 +5,11 @@
     "mappings" : {
         "properties" : {
             "@timestamp": {"type": "date"},
+            "sira_no": { "type": "integer" },
             "numara": { "type": "keyword" },
             "tip": {"type": "keyword"},
-            "hedef_numara": {"type": "keyword"},
             "tarih": {"type": "date", "format": "dd.MM.yyyy HH:mm:ss"},
             "sure": {"type": "text"},
-            "hedef_numara_isim": {"type": "keyword"},
-            "hedef_numara_adres": {"type": "text"},
-            "hedef_numara_dogum": {"type": "text"},
-            "hedef_numara_il": {"type": "text"},
-            "hedef_numara_ebevyn": {"type": "text"},
             "imei": {"type": "keyword"},
             "kaynak_ip": {"type": "ip"},
             "hedef_ip": {"type": "ip"},
