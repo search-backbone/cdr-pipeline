@@ -21,4 +21,4 @@ gcloud beta compute --project=${PROJECT} instances create instance-1 \
 
 echo "Open firewall ports 9200, 5601, then"
 echo "SSH to COS image, then"
-echo "Run ./install-elk-stack.sh"
+echo "Run, bash install-elk-stack.sh"

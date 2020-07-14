@@ -1,14 +1,14 @@
 
 source .elk.env
-
-echo "create a COS image instance on GCP"
+echo "Play ------- Install ELK on COS image instance on GCP -------"
 
 # handle permissions
+echo "Step 0 ------- Adject data and pipelines for logstash -------"
 chmod 777 ~/cdr-pipeline/data
 chmod 777 ~/cdr-pipeline/pipelines
 
-echo ${ELASTIC_DOCKER_PRIVATE_IP}
 
+echo "Step 1 ------- Install elastic on docker -------"
 docker run -itd --name ${ELASTIC_NAME} \
            -p 9200:9200 \
            -p 9300:9300 \
@@ -17,11 +17,27 @@ docker run -itd --name ${ELASTIC_NAME} \
            --ulimit nofile=65535:65535 \
            docker.elastic.co/elasticsearch/elasticsearch:7.8.0
 
+echo "Step 2 ------- Install kibana on docker -------"
 docker run -itd --name ${KIBANA_NAME} \
            --link ${ELASTIC_NAME}:elasticsearch \
            -p 5601:5601 \
            docker.elastic.co/kibana/kibana:7.8.0
 
+# check
+echo "Step 3 ------- Check elasticsearch server -------"
+curl "localhost:9200"
+
+echo "Step 4 ------- Create Index -------"
+
+curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
+     -H 'Content-Type: application/json' \
+     --data-binary '@mappings/call_records_mapping.json'
+
+# check
+echo "Step 5 ------- Check index -------"
+curl "localhost:9200/call-records?pretty"
+
+echo "Step 6 ------- Install logstash -------"
 docker run -itd --name ${LOGSTASH_NAME} \
            -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
            -e xpack.monitoring.enabled="false" \
@@ -30,8 +46,9 @@ docker run -itd --name ${LOGSTASH_NAME} \
            -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0
 
-echo "Use, docker logs CONTAINER_NAME, to see errors"
-echo "Check scenarios to test" 
-echo "to test bulk data ingestion, Run: sh load-bulk.sh"  
+echo "Step 7 ------- Check pipelines -------"
+docker logs ${LOGSTASH_NAME} | tail &
+
+
 
 echo "Use, docker start abidindenyo kibos ketenpere, once you have started !!!"
