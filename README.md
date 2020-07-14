@@ -16,10 +16,7 @@ Importing *.csv to elasticsearch
 - Scenarios
     - [ ] One record
     - [x] Bulk => Use **1.0.0-BULK-LOAD** tag
-    - Ingestion
-        - [x] Ingestion w/ Kibana UI
-            - Just upload the file, check mappings etc. Not scalable.    
-        - [ ] ..
+    - [x] Ingestion w/ Kibana UI => Just upload the file, check mappings etc.    
     - [x] Pipeline w/ Logstash
         - Run `bash install-elk-stack.sh`, to install dockers, index creations and pipelines
     - [ ] Pipeline w/ Client Libraries
