@@ -2,6 +2,7 @@
 # json file has some special format !
 
 source .elk.env
+echo "Play ------- Load Bulk data -------"
 
 echo "Step 1 ------- Create Index -------"
 
