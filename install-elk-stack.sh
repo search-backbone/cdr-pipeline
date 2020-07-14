@@ -38,7 +38,7 @@ docker run -itd --name ${LOGSTASH_NAME} \
            -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0
 
-sleep 30s
+sleep 90s
 
 echo "Step 5 ------- Check data -------"
 curl -XGET "http://localhost:9200/${INDEX_NAME[0]}/_search?q=numara:5529990000&pretty"
