@@ -15,16 +15,13 @@ Importing *.csv to elasticsearch
 
 - Scenarios
     - [ ] One record
-    - [x] Bulk 
-        - json to bulk-elastic-json is must. Uses `data/call_bulk.json` file
-        - load bulk to the index `bash load-bulk.sh`
-
+    - [x] Bulk => Use **1.0.0-BULK-LOAD** tag
     - Ingestion
         - [x] Ingestion w/ Kibana UI
             - Just upload the file, check mappings etc. Not scalable.    
         - [ ] ..
-    - [ ] Pipeline w/ Logstash
-        - ..
+    - [x] Pipeline w/ Logstash
+        - Run `bash install-elk-stack.sh`, to install dockers, index creations and pipelines
     - [ ] Pipeline w/ Client Libraries
         - ..
 
