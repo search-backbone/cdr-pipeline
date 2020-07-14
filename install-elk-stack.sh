@@ -23,6 +23,8 @@ docker run -itd --name ${KIBANA_NAME} \
            -p 5601:5601 \
            docker.elastic.co/kibana/kibana:7.8.0
 
+sleep 60s
+
 # check
 echo "Step 3 ------- Check elasticsearch server -------"
 curl "localhost:9200"
@@ -45,6 +47,8 @@ docker run -itd --name ${LOGSTASH_NAME} \
            -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
            -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
            docker.elastic.co/logstash/logstash:7.8.0
+
+sleep 30s
 
 echo "Step 7 ------- Check pipelines -------"
 docker logs ${LOGSTASH_NAME} | tail &
