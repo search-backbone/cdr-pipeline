@@ -4,7 +4,6 @@ Importing *.csv to elasticsearch
 
 - [x] Preparations
     - `git clone https://github.com/search-backbone/cdr-pipeline.git` to get files on COS instance
-        - `chmod 777 cdr-pipeline/data`, and `chmod 777 cdr-pipeline/pipelines`
         - to install ELK `bash install-elk-stack.sh` inside COS instance
 
 - [x] Conversions
@@ -18,13 +17,7 @@ Importing *.csv to elasticsearch
     - [ ] One record
     - [x] Bulk 
         - json to bulk-elastic-json is must. Uses `data/call_bulk.json` file
-        - create an index `bash create-index.sh`
-        - load bulk to that index `bash load-bulk.sh`
-        - to query
-            - use curl commands 
-                - lucene syntax: `curl -XGET "http://localhost:9200/call-records/_search?q=hedef_numara:5529991111&pretty"`, or
-                - ..
-            - create _index pattern_ manually for Kibana UI
+        - load bulk to the index `bash load-bulk.sh`
 
     - Ingestion
         - [x] Ingestion w/ Kibana UI

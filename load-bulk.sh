@@ -3,14 +3,26 @@
 
 source .elk.env
 
+echo "Step 1 ------- Create Index -------"
+
+curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
+     -H 'Content-Type: application/json' \
+     --data-binary '@mappings/call_records_mapping.json'
+
+echo "Step 2 ------- Check index -------"
+curl "localhost:9200/call-records?pretty"
+
+echo "Step 3 ------- Load bulk data -------"
 curl -H 'Content-Type: application/x-ndjson' \
      -XPOST "http://localhost:9200/${INDEX_NAME}/_bulk?pretty" \
      --data-binary '@data/call_bulk.json'
 
 # query
+echo "Step 4 ------- Check index -------"
 curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=sira_no:37&pretty"
+curl -XGET "http://localhost:9200/${INDEX_NAME}/_search?q=hedef_numara:5529991111&pretty"
 
-echo "On UI, create index patern, test, to see UI discovery"
+echo "On UI, create index patern, to see on Kibana UI discovery"
 
 # w/ pipeline: -XPOST 'http://localhost:9200/test/_bulk?pretty or
 #              -XPOST 'http://localhost:9200/_bulk?pretty

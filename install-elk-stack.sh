@@ -3,7 +3,7 @@ source .elk.env
 echo "Play ------- Install ELK on COS image instance on GCP -------"
 
 # handle permissions
-echo "Step 0 ------- Adject data and pipelines for logstash -------"
+echo "Step 0 ------- Adjust data and pipelines for logstash -------"
 chmod 777 ~/cdr-pipeline/data
 chmod 777 ~/cdr-pipeline/pipelines
 
@@ -27,28 +27,9 @@ docker run -itd --name ${KIBANA_NAME} \
 echo "Step 3 ------- Check elasticsearch server -------"
 curl "localhost:9200"
 
-echo "Step 4 ------- Create Index -------"
-
-curl -X PUT "${ELASTIC_IP}:9200/${INDEX_NAME}?pretty" \
-     -H 'Content-Type: application/json' \
-     --data-binary '@mappings/call_records_mapping.json'
-
-# check
-echo "Step 5 ------- Check index -------"
-curl "localhost:9200/call-records?pretty"
-
-echo "Step 6 ------- Install logstash -------"
-docker run -itd --name ${LOGSTASH_NAME} \
-           -e LS_JAVA_OPTS="-Xms4g -Xmx8g" \
-           -e xpack.monitoring.enabled="false" \
-           -e xpack.monitoring.elasticsearch.hosts="http://${ELASTIC_DOCKER_PRIVATE_IP}:9200" \
-           -v ~/cdr-pipeline/pipelines/:/usr/share/logstash/pipeline/ \
-           -v ~/cdr-pipeline/data:/usr/share/logstash/data/ \
-           docker.elastic.co/logstash/logstash:7.8.0
-
-echo "Step 7 ------- Check pipelines -------"
-docker logs ${LOGSTASH_NAME} | tail &
 
 
 
-echo "Use, docker start abidindenyo kibos ketenpere, once you have started !!!"
+
+echo "Run, bash load-bulk.sh, to create index and load bulk data"
+echo "Use, docker start abidindenyo kibos, once you have started !!!"
